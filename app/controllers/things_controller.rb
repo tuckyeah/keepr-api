@@ -1,4 +1,4 @@
-class ThingsController < ApplicationController
+class ThingsController < OpenReadController
   before_action :set_thing, only: [:show, :update, :destroy]
 
   # GET /things
