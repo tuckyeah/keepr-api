@@ -7,8 +7,8 @@ default: &default
 
 development:
   <<: *default
-  database: <%= keepr-api %>_development
+  database: <%= project_name %>_development
 
 test:
   <<: *default
-  database: <%= keepr-api %>_test
+  database: <%= project_name %>_test
