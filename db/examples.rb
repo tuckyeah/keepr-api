@@ -18,3 +18,8 @@
 end
 
 movies = Category.create(name: 'Movies', user_id: 1);
+
+scream = Thing.create(name: 'Scream');
+jaws = Thing.create(name: 'Jaws');
+
+my_list = CategoryContent.create(category_id: movies.id, thing_id: scream.id)
