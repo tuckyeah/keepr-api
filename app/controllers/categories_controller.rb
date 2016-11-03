@@ -1,10 +1,10 @@
-class CategoriesController < ApplicationController
+class CategoriesController < OpenReadController
   before_action :set_category, only: [:show, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @current_user ? @categories = @current_user.categories : @categories = Category.all
 
     render json: @categories
   end
@@ -54,6 +54,6 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :user_id)
     end
 end
