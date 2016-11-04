@@ -54,6 +54,6 @@ class CategoryContentsController < ApplicationController
     end
 
     def category_content_params
-      params.require(:category_content).permit(:category_id, :thing_id)
+      params.require(:category_content).permit(:category_id, :thing_id, :notes, :done)
     end
 end
