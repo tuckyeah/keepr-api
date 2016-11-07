@@ -19,8 +19,10 @@ class ThingsController < OpenReadController
   # POST /things.json
   def create
     @thing = Thing.new(thing_params)
+    @category = Category.find(params[:category_id])
 
     if @thing.save
+      @category.category_contents.create(thing_id: @thing.id, category_id: params[:category_id]);
       render json: @thing, status: :created, location: @thing
     else
       render json: @thing.errors, status: :unprocessable_entity

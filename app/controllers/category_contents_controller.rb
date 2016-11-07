@@ -1,10 +1,5 @@
 class CategoryContentsController < ApplicationController
   before_action :set_category_content, only: [:show, :update, :destroy]
-  # before_create :make_thing
-
-  def make_thing
-    @thing = Thing.new(category_content_params[:thing_name])
-  end
 
   # GET /category_contents
   # GET /category_contents.json
