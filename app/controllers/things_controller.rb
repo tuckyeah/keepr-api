@@ -54,6 +54,6 @@ class ThingsController < OpenReadController
     end
 
     def thing_params
-      params.require(:thing).permit(:name)
+      params.require(:thing).permit(:name, :category_id, :done, :notes)
     end
 end

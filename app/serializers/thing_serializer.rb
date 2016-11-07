@@ -1,7 +1,8 @@
 class ThingSerializer < ActiveModel::Serializer
-  attributes :id, :name, :categories
+  attributes :id, :name, :done, :notes
+  belongs_to :category
 
-  def categories
-    object.categories.pluck(:id)
+  def category
+    object.category.id
   end
 end

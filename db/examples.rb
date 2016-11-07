@@ -20,11 +20,11 @@ end
 movies = Category.create(name: 'Movies', user_id: 1)
 books = Category.create(name: 'Books', user_id: 1)
 
-scream = Thing.create(name: 'Scream');
-jaws = Thing.create(name: 'Jaws');
+scream = Thing.create(name: 'Scream', category_id: movies.id);
+jaws = Thing.create(name: 'Jaws', category_id: movies.id);
 
-it = Thing.create(name: 'It');
+it = Thing.create(name: 'It', category_id: books.id);
 
-my_list = CategoryContent.create(category_id: movies.id, thing_id: scream.id)
-CategoryContent.create(category_id: movies.id, thing_id: jaws.id)
-CategoryContent.create(category_id: books.id, thing_id: it.id);
+# my_list = CategoryContent.create(category_id: movies.id, thing_id: scream.id)
+# CategoryContent.create(category_id: movies.id, thing_id: jaws.id)
+# CategoryContent.create(category_id: books.id, thing_id: it.id);
