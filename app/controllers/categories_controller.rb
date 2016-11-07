@@ -4,7 +4,11 @@ class CategoriesController < OpenReadController
   # GET /categories
   # GET /categories.json
   def index
-    @current_user ? @categories = @current_user.categories : @categories = Category.all
+    if params[:user] == 'current'
+      @categories = @current_user.categories
+    else
+      @categories = Category.all
+    end
 
     render json: @categories
   end
@@ -49,11 +53,11 @@ class CategoriesController < OpenReadController
 
   private
 
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    def category_params
-      params.require(:category).permit(:name, :user_id)
-    end
+  def category_params
+    params.require(:category).permit(:name, :user_id)
+  end
 end

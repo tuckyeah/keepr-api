@@ -9,7 +9,7 @@ curl --include --request GET http://localhost:3000/categories/1 \
 # Create Category
 curl --include --request POST http://localhost:3000/categories \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=$TOKEN" \
+  --header "Authorization: Token token=BAhJIiU0MTMxMjgyZWUxMGY5OTllOThmYmY0OWM0ZWZkOTU0MgY6BkVG--c728b7ffb4fc49d763b70ebf1b297f627bedca59" \
   --data '{
     "category": {
       "name": "Beer",
