@@ -1,10 +1,16 @@
-class CategoryContentsController < ApplicationController
+class CategoryContentsController < OpenReadController
   before_action :set_category_content, only: [:update, :destroy]
 
   # GET /category_contents
   # GET /category_contents.json
   def index
-    @category_contents = CategoryContent.all
+    if params
+      @category_contents = CategoryContent.find_by({
+        category_id: params[:category_id],
+        thing_id: params[:thing_id]})
+    else
+      @category_contents = CategoryContent.all
+    end
 
     render json: @category_contents
   end
@@ -12,8 +18,8 @@ class CategoryContentsController < ApplicationController
   # GET /category_contents/1
   # GET /category_contents/1.json
   def show
-    @thing = Thing.find(params[:id])
-    @category_content = CategoryContent.find_by(thing_id: @thing.id)
+    # @thing = Thing.find(params[:id])
+    @category_content = CategoryContent.find(params[:id])
     render json: @category_content
   end
 
@@ -50,7 +56,6 @@ class CategoryContentsController < ApplicationController
   end
 
   private
-
     def set_category_content
       @category_content = CategoryContent.find(params[:id])
     end
