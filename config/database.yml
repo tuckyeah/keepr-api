@@ -1,4 +1,4 @@
-<% project_name = 'keepr-api' %>
+<% project_name = 'rails-api-template' %>
 
 default: &default
   adapter: postgresql
