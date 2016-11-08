@@ -15,7 +15,7 @@ curl --include --request PATCH http://localhost:3000/category_contents/3 \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "category_content": {
-      "thing_id": 2
+      "notes": "I love this"
     }
   }'
 

@@ -1,5 +1,5 @@
 class CategoryContentsController < ApplicationController
-  before_action :set_category_content, only: [:show, :update, :destroy]
+  before_action :set_category_content, only: [:update, :destroy]
 
   # GET /category_contents
   # GET /category_contents.json
@@ -12,6 +12,8 @@ class CategoryContentsController < ApplicationController
   # GET /category_contents/1
   # GET /category_contents/1.json
   def show
+    @thing = Thing.find(params[:id])
+    @category_content = CategoryContent.find_by(thing_id: @thing.id)
     render json: @category_content
   end
 
