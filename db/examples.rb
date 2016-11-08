@@ -25,6 +25,6 @@ jaws = Thing.create(name: 'Jaws');
 
 it = Thing.create(name: 'It');
 
-my_list = CategoryContent.create(category_id: movies.id, thing_id: scream.id)
-CategoryContent.create(category_id: movies.id, thing_id: jaws.id)
-CategoryContent.create(category_id: books.id, thing_id: it.id);
+CategoryContent.create(category_id: movies.id, thing_id: scream.id, notes: 'loved it')
+CategoryContent.create(category_id: movies.id, thing_id: jaws.id, notes: 'hated it')
+CategoryContent.create(category_id: books.id, thing_id: it.id, notes: 'feel ok')
