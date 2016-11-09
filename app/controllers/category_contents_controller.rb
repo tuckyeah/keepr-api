@@ -1,4 +1,4 @@
-class CategoryContentsController < OpenReadController
+class CategoryContentsController < ProtectedController
   before_action :set_category_content, only: [:update, :destroy]
 
   # GET /category_contents

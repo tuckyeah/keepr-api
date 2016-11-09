@@ -1,14 +1,10 @@
-class CategoriesController < OpenReadController
+class CategoriesController < ProtectedController
   before_action :set_category, only: [:show, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    if params[:user] == 'current'
-      @categories = @current_user.categories
-    else
-      @categories = Category.all
-    end
+    @categories = @current_user.categories
 
     render json: @categories
   end
