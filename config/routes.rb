@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :category_contents, except: [:new, :edit]
-  resources :things, only: [:show, :edit, :destroy]
+  resources :category_contents, except: [:index, :new, :edit]
+  resources :things, only: [:show]
   resources :categories, except: [:new, :edit] do
     resources :things, only: [:index, :create]
   end

@@ -1,26 +1,16 @@
 class CategoryContentsController < ProtectedController
   before_action :set_category_content, only: [:update, :destroy]
 
-  # GET /category_contents
-  # GET /category_contents.json
-  def index
-    if params
-      @category_contents = CategoryContent.find_by({
-        category_id: params[:category_id],
-        thing_id: params[:thing_id]})
-    else
-      @category_contents = CategoryContent.all
-    end
-
-    render json: @category_contents
-  end
-
   # GET /category_contents/1
   # GET /category_contents/1.json
   def show
-    # @thing = Thing.find(params[:id])
     @category_content = CategoryContent.find(params[:id])
-    render json: @category_content
+
+    if is_owner
+      render json: @category_content
+    else
+      render json: @category_content.errors, status: :unauthorized
+    end
   end
 
   # POST /category_contents
@@ -40,7 +30,9 @@ class CategoryContentsController < ProtectedController
   def update
     @category_content = CategoryContent.find(params[:id])
 
-    if @category_content.update(category_content_params)
+    if !is_owner
+      render json @category_content.errors, status: :unauthorized
+    elsif @category_content.update(category_content_params)
       head :no_content
     else
       render json: @category_content.errors, status: :unprocessable_entity
@@ -50,12 +42,21 @@ class CategoryContentsController < ProtectedController
   # DELETE /category_contents/1
   # DELETE /category_contents/1.json
   def destroy
-    @category_content.destroy
-
-    head :no_content
+    if is_owner
+      @category_content.destroy
+      head :no_content
+    else
+      render status: :unauthorized
+    end
   end
 
   private
+
+    def is_owner
+      @category_content = CategoryContent.find(params[:id])
+      @category_content.category.user_id == @current_user.id
+    end
+
     def set_category_content
       @category_content = CategoryContent.find(params[:id])
     end

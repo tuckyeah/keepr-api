@@ -33,23 +33,23 @@ class ThingsController < OpenReadController
 
   # PATCH/PUT /things/1
   # PATCH/PUT /things/1.json
-  def update
-    @thing = Thing.find(params[:id])
-
-    if @thing.update(thing_params)
-      head :no_content
-    else
-      render json: @thing.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   @thing = Thing.find(params[:id])
+  #
+  #   if @thing.update(thing_params)
+  #     head :no_content
+  #   else
+  #     render json: @thing.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /things/1
   # DELETE /things/1.json
-  def destroy
-    @thing.destroy
-
-    head :no_content
-  end
+  # def destroy
+  #   @thing.destroy
+  #
+  #   head :no_content
+  # end
 
   private
 
