@@ -20,6 +20,8 @@ end
 movies = Category.create(name: 'Movies', user_id: 1)
 books = Category.create(name: 'Books', user_id: 1)
 
+books_2 = Category.create(name: 'Books', user_id: 2)
+
 scream = Thing.create(name: 'Scream');
 jaws = Thing.create(name: 'Jaws');
 
@@ -28,3 +30,4 @@ it = Thing.create(name: 'It');
 CategoryContent.create(category_id: movies.id, thing_id: scream.id, notes: 'loved it')
 CategoryContent.create(category_id: movies.id, thing_id: jaws.id, notes: 'hated it')
 CategoryContent.create(category_id: books.id, thing_id: it.id, notes: 'feel ok')
+CategoryContent.create(category_id: books_2.id, thing_id: it.id, notes: 'feel ok')
