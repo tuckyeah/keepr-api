@@ -43,11 +43,7 @@ module RailsApiTemplate
     cors_port = 'GA'.each_byte.reduce('') { |a, e| a + format('%d', e) }.to_i
     config.middleware.use Rack::Cors do
       allow do
-<<<<<<< Updated upstream
-        origins ENV['CLIENT_ORIGIN'] || "http://localhost:#{cors_port}"
-=======
-        origins ENV['https://tuckyeah.github.io/keepr-ember/'] || 'http://localhost:7165'
->>>>>>> Stashed changes
+        origins ENV['https://tuckyeah.github.io/keepr-ember/'] || "http://localhost:#{cors_port}"
         resource '*',
                  headers: :any,
                  methods: [:options, :get,
