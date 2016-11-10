@@ -1,24 +1,28 @@
-# Create Content
-curl --include --request POST http://localhost:3000/category_contents \
+# Show One Category
+curl --include --request GET http://localhost:4741/category_contents/$ID \
+  --header "Authorization: Token token=$TOKEN"
+
+# Create Category
+curl --include --request POST http://localhost:4741/category_contents \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=$TOKEN" \
+  --header "Authorization: Token token=BAhJIiU0MTMxMjgyZWUxMGY5OTllOThmYmY0OWM0ZWZkOTU0MgY6BkVG--c728b7ffb4fc49d763b70ebf1b297f627bedca59" \
   --data '{
-    "category_content": {
-      "category_id": 2,
-      "thing_id": 3
+    "category": {
+      "name": "Beer",
+      "user_id": 1
     }
   }'
 
-# Update Content
-curl --include --request PATCH http://localhost:3000/category_contents/3 \
+# Update Category
+curl --include --request PATCH http://localhost:4741/category_contents/$ID \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
-    "category_content": {
-      "notes": "I love this"
+    "category": {
+      "name": "Wine"
     }
   }'
 
-# Delete Content
-curl --include --request DELETE http://localhost:3000/category_contents/5 \
+# Delete Category
+curl --include --request DELETE http://localhost:4741/category_contents/$ID \
   --header "Authorization: Token token=$TOKEN"

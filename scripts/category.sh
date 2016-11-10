@@ -1,13 +1,13 @@
 # All Categories
-curl --include --request GET http://localhost:3000/categories \
+curl --include --request GET http://localhost:4741/categories \
   --header "Authorization: Token token=$TOKEN"
 
 # Show One Category
-curl --include --request GET http://localhost:3000/categories/1 \
+curl --include --request GET http://localhost:4741/categories/$ID \
   --header "Authorization: Token token=$TOKEN"
 
 # Create Category
-curl --include --request POST http://localhost:3000/categories \
+curl --include --request POST http://localhost:4741/categories \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=BAhJIiU0MTMxMjgyZWUxMGY5OTllOThmYmY0OWM0ZWZkOTU0MgY6BkVG--c728b7ffb4fc49d763b70ebf1b297f627bedca59" \
   --data '{
@@ -18,7 +18,7 @@ curl --include --request POST http://localhost:3000/categories \
   }'
 
 # Update Category
-curl --include --request PATCH http://localhost:3000/categories/3 \
+curl --include --request PATCH http://localhost:4741/categories/$ID \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
@@ -28,5 +28,5 @@ curl --include --request PATCH http://localhost:3000/categories/3 \
   }'
 
 # Delete Category
-curl --include --request DELETE http://localhost:3000/categories/3 \
+curl --include --request DELETE http://localhost:4741/categories/$ID \
   --header "Authorization: Token token=$TOKEN"

@@ -3,4 +3,6 @@ class Category < ActiveRecord::Base
   has_many :things, through: :category_contents
   has_many :category_contents, -> { order(created_at: :asc) },
                                   dependent: :destroy
+
+  validates :name, presence: true
 end

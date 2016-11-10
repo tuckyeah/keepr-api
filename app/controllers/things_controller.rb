@@ -1,13 +1,17 @@
-class ThingsController < OpenReadController
+class ThingsController < ProtectedController
   before_action :set_thing, only: [:show, :update, :destroy]
   # before_create :validate_thing
 
   # GET /things
   # GET /things.json
   def index
-    @things = Thing.all
-
-    render json: @things
+    @category = Category.find_by(id: params[:category_id])
+    if @current_user.id != @category.user_id
+      render json @category.errors, status: :unauthorized
+    else
+      @things = @category.things
+      render json: @things
+    end
   end
 
   # GET /things/1
